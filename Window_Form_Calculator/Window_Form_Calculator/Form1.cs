@@ -13,9 +13,9 @@
 
         private void button_click(object sender, EventArgs e)
         {
-            if (resultText.Text == "0" || isOpePerform)     
+            if (resultText.Text == "0" || isOpePerform)
                 resultText.Clear();     //Xóa số 0 khi bắt đầu gõ số đầu tiên và xóa hết số khi chọn phép tính
-            isOpePerform = false; 
+            isOpePerform = false;
             Button button = (Button)sender;
             if (button.Text == ".")     //không cho phép xuất hiện nhiều dấu .
             {
@@ -29,7 +29,7 @@
         private void operator_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if(result != 0)
+            if (result != 0)
             {   //Khi tiếp tục ấn phép tính mà không ấn dấu = thì sẽ tự động
                 //thực hiện phép tính và đẩy sang phép tính mới
                 equal.PerformClick();
@@ -54,7 +54,7 @@
 
         private void button_equal(object sender, EventArgs e)
         {
-            switch(operation)
+            switch (operation)
             {
                 case "+":
                     resultText.Text = (result + Double.Parse(resultText.Text)).ToString();
@@ -69,6 +69,11 @@
                     resultText.Text = (result / Double.Parse(resultText.Text)).ToString();
                     break;
             }
+        }
+
+        private void resultText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
