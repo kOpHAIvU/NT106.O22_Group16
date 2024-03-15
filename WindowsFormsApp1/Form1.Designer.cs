@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnBack = new System.Windows.Forms.Button();
             this.btnFoward = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -108,8 +109,10 @@
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnFoward);
             this.Controls.Add(this.btnBack);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "File Explorer";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
