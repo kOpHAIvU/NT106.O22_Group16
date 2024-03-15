@@ -8,11 +8,22 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+            (
+                int nLeft,
+                int nTop,
+                int nRight,
+                int nBottom,
+                int nWidthEllipse,
+                int nHeightEllipse
+            );
         public Form1()
         {
             InitializeComponent();
@@ -49,7 +60,9 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 6, 6));
+            btnFoward.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFoward.Width, btnFoward.Height, 6, 6));
+            btnOpen.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnOpen.Width, btnOpen.Height, 6, 6));
         }
     }
 }

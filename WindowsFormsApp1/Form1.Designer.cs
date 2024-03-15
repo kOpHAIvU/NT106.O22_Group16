@@ -39,10 +39,13 @@
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnBack.Location = new System.Drawing.Point(0, 0);
+            this.btnBack.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Location = new System.Drawing.Point(12, 11);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(54, 36);
+            this.btnBack.Size = new System.Drawing.Size(53, 39);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "<<";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -50,11 +53,14 @@
             // 
             // btnFoward
             // 
-            this.btnFoward.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnFoward.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnFoward.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnFoward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFoward.ForeColor = System.Drawing.Color.Black;
-            this.btnFoward.Location = new System.Drawing.Point(60, 0);
+            this.btnFoward.Location = new System.Drawing.Point(75, 11);
+            this.btnFoward.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFoward.Name = "btnFoward";
-            this.btnFoward.Size = new System.Drawing.Size(54, 36);
+            this.btnFoward.Size = new System.Drawing.Size(53, 39);
             this.btnFoward.TabIndex = 0;
             this.btnFoward.Text = ">>";
             this.btnFoward.UseVisualStyleBackColor = false;
@@ -62,11 +68,14 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOpen.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnOpen.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpen.ForeColor = System.Drawing.Color.Black;
-            this.btnOpen.Location = new System.Drawing.Point(713, 7);
+            this.btnOpen.Location = new System.Drawing.Point(783, 11);
+            this.btnOpen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.Size = new System.Drawing.Size(114, 39);
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = false;
@@ -75,41 +84,47 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(120, 10);
+            this.label1.Location = new System.Drawing.Point(135, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 16);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Path:";
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(163, 7);
+            this.txtPath.Location = new System.Drawing.Point(185, 13);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(538, 22);
+            this.txtPath.Size = new System.Drawing.Size(580, 33);
             this.txtPath.TabIndex = 2;
             this.txtPath.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
             // 
             // webBrowser
             // 
-            this.webBrowser.Location = new System.Drawing.Point(0, 42);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Location = new System.Drawing.Point(12, 68);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(22, 25);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(788, 407);
+            this.webBrowser.Size = new System.Drawing.Size(887, 484);
             this.webBrowser.TabIndex = 3;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 449);
+            this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.kt4;
+            this.ClientSize = new System.Drawing.Size(911, 565);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnFoward);
             this.Controls.Add(this.btnBack);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "File Explorer";
             this.Load += new System.EventHandler(this.Form1_Load);
