@@ -52,255 +52,366 @@
             // 
             // seven
             // 
-            seven.FlatAppearance.BorderColor = Color.Yellow;
-            seven.FlatAppearance.BorderSize = 10;
+            seven.BackColor = Color.FromArgb(251, 193, 147);
+            seven.FlatAppearance.BorderColor = Color.LightGray;
+            seven.FlatAppearance.BorderSize = 3;
+            seven.FlatAppearance.CheckedBackColor = Color.Red;
+            seven.FlatAppearance.MouseDownBackColor = Color.SandyBrown;
+            seven.FlatAppearance.MouseOverBackColor = Color.Bisque;
+            seven.FlatStyle = FlatStyle.Flat;
             seven.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            seven.Location = new Point(22, 78);
+            seven.Location = new Point(29, 103);
+            seven.Margin = new Padding(4);
             seven.Name = "seven";
-            seven.Size = new Size(60, 60);
+            seven.Size = new Size(75, 75);
             seven.TabIndex = 0;
             seven.Text = "7";
-            seven.UseVisualStyleBackColor = true;
+            seven.UseVisualStyleBackColor = false;
             seven.Click += button_click;
             // 
             // eight
             // 
-            eight.FlatAppearance.BorderColor = Color.Yellow;
-            eight.FlatAppearance.BorderSize = 10;
+            eight.BackColor = Color.FromArgb(251, 193, 147);
+            eight.FlatAppearance.BorderColor = Color.LightGray;
+            eight.FlatAppearance.BorderSize = 3;
+            eight.FlatAppearance.CheckedBackColor = Color.Red;
+            eight.FlatAppearance.MouseDownBackColor = Color.SandyBrown;
+            eight.FlatAppearance.MouseOverBackColor = Color.Bisque;
+            eight.FlatStyle = FlatStyle.Flat;
             eight.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            eight.Location = new Point(88, 78);
+            eight.Location = new Point(112, 103);
+            eight.Margin = new Padding(4);
             eight.Name = "eight";
-            eight.Size = new Size(60, 60);
+            eight.Size = new Size(75, 75);
             eight.TabIndex = 1;
             eight.Text = "8";
-            eight.UseVisualStyleBackColor = true;
+            eight.UseVisualStyleBackColor = false;
             eight.Click += button_click;
             // 
             // divine
             // 
-            divine.FlatAppearance.BorderColor = Color.Yellow;
-            divine.FlatAppearance.BorderSize = 10;
+            divine.BackColor = Color.FromArgb(251, 193, 147);
+            divine.FlatAppearance.BorderColor = Color.LightGray;
+            divine.FlatAppearance.BorderSize = 3;
+            divine.FlatAppearance.CheckedBackColor = Color.Red;
+            divine.FlatAppearance.MouseDownBackColor = Color.SandyBrown;
+            divine.FlatAppearance.MouseOverBackColor = Color.Bisque;
+            divine.FlatStyle = FlatStyle.Flat;
             divine.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            divine.Location = new Point(220, 78);
+            divine.Location = new Point(281, 102);
+            divine.Margin = new Padding(4);
             divine.Name = "divine";
-            divine.Size = new Size(60, 60);
+            divine.Size = new Size(75, 75);
             divine.TabIndex = 3;
             divine.Text = "/";
-            divine.UseVisualStyleBackColor = true;
+            divine.UseVisualStyleBackColor = false;
             divine.Click += operator_click;
             // 
             // nine
             // 
-            nine.FlatAppearance.BorderColor = Color.Yellow;
-            nine.FlatAppearance.BorderSize = 10;
+            nine.BackColor = Color.FromArgb(251, 193, 147);
+            nine.FlatAppearance.BorderColor = Color.LightGray;
+            nine.FlatAppearance.BorderSize = 3;
+            nine.FlatAppearance.CheckedBackColor = Color.Red;
+            nine.FlatAppearance.MouseDownBackColor = Color.SandyBrown;
+            nine.FlatAppearance.MouseOverBackColor = Color.Bisque;
+            nine.FlatStyle = FlatStyle.Flat;
             nine.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nine.Location = new Point(154, 78);
+            nine.Location = new Point(197, 103);
+            nine.Margin = new Padding(4);
             nine.Name = "nine";
-            nine.Size = new Size(60, 60);
+            nine.Size = new Size(75, 75);
             nine.TabIndex = 2;
             nine.Text = "9";
-            nine.UseVisualStyleBackColor = true;
+            nine.UseVisualStyleBackColor = false;
             nine.Click += button_click;
             // 
             // CE
             // 
-            CE.FlatAppearance.BorderColor = Color.Yellow;
-            CE.FlatAppearance.BorderSize = 10;
+            CE.BackColor = Color.FromArgb(242, 128, 118);
+            CE.FlatAppearance.BorderColor = Color.LightGray;
+            CE.FlatAppearance.BorderSize = 3;
+            CE.FlatAppearance.CheckedBackColor = Color.Red;
+            CE.FlatAppearance.MouseDownBackColor = Color.IndianRed;
+            CE.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 192, 192);
+            CE.FlatStyle = FlatStyle.Flat;
             CE.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CE.Location = new Point(286, 144);
+            CE.Location = new Point(364, 185);
+            CE.Margin = new Padding(4);
             CE.Name = "CE";
-            CE.Size = new Size(60, 60);
+            CE.Size = new Size(75, 75);
             CE.TabIndex = 4;
             CE.Text = "CE";
-            CE.UseVisualStyleBackColor = true;
+            CE.UseVisualStyleBackColor = false;
             CE.Click += buttonCE;
             // 
             // C
             // 
-            C.FlatAppearance.BorderColor = Color.Yellow;
-            C.FlatAppearance.BorderSize = 10;
+            C.BackColor = Color.FromArgb(242, 128, 118);
+            C.FlatAppearance.BorderColor = Color.LightGray;
+            C.FlatAppearance.BorderSize = 3;
+            C.FlatAppearance.CheckedBackColor = Color.Red;
+            C.FlatAppearance.MouseDownBackColor = Color.IndianRed;
+            C.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 192, 192);
+            C.FlatStyle = FlatStyle.Flat;
             C.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            C.Location = new Point(286, 78);
+            C.Location = new Point(364, 102);
+            C.Margin = new Padding(4);
             C.Name = "C";
-            C.Size = new Size(60, 60);
+            C.Size = new Size(75, 75);
             C.TabIndex = 9;
             C.Text = "C";
-            C.UseVisualStyleBackColor = true;
+            C.UseVisualStyleBackColor = false;
             C.Click += buttonC;
             // 
             // multiply
             // 
-            multiply.FlatAppearance.BorderColor = Color.Yellow;
-            multiply.FlatAppearance.BorderSize = 10;
+            multiply.BackColor = Color.OldLace;
+            multiply.FlatAppearance.BorderColor = Color.LightGray;
+            multiply.FlatAppearance.BorderSize = 3;
+            multiply.FlatAppearance.CheckedBackColor = Color.Red;
+            multiply.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            multiply.FlatAppearance.MouseOverBackColor = Color.White;
+            multiply.FlatStyle = FlatStyle.Flat;
             multiply.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            multiply.Location = new Point(220, 144);
+            multiply.Location = new Point(281, 185);
+            multiply.Margin = new Padding(4);
             multiply.Name = "multiply";
-            multiply.Size = new Size(60, 60);
+            multiply.Size = new Size(75, 75);
             multiply.TabIndex = 8;
             multiply.Text = "*";
-            multiply.UseVisualStyleBackColor = true;
+            multiply.UseVisualStyleBackColor = false;
             multiply.Click += operator_click;
             // 
             // six
             // 
-            six.FlatAppearance.BorderColor = Color.Yellow;
-            six.FlatAppearance.BorderSize = 10;
+            six.BackColor = Color.OldLace;
+            six.FlatAppearance.BorderColor = Color.LightGray;
+            six.FlatAppearance.BorderSize = 3;
+            six.FlatAppearance.CheckedBackColor = Color.Red;
+            six.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            six.FlatAppearance.MouseOverBackColor = Color.White;
+            six.FlatStyle = FlatStyle.Flat;
             six.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            six.Location = new Point(154, 144);
+            six.Location = new Point(197, 185);
+            six.Margin = new Padding(4);
             six.Name = "six";
-            six.Size = new Size(60, 60);
+            six.Size = new Size(75, 75);
             six.TabIndex = 7;
             six.Text = "6";
-            six.UseVisualStyleBackColor = true;
+            six.UseVisualStyleBackColor = false;
             six.Click += button_click;
             // 
             // five
             // 
-            five.FlatAppearance.BorderColor = Color.Yellow;
-            five.FlatAppearance.BorderSize = 10;
+            five.BackColor = Color.OldLace;
+            five.FlatAppearance.BorderColor = Color.LightGray;
+            five.FlatAppearance.BorderSize = 3;
+            five.FlatAppearance.CheckedBackColor = Color.Red;
+            five.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            five.FlatAppearance.MouseOverBackColor = Color.White;
+            five.FlatStyle = FlatStyle.Flat;
             five.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            five.Location = new Point(88, 144);
+            five.Location = new Point(112, 185);
+            five.Margin = new Padding(4);
             five.Name = "five";
-            five.Size = new Size(60, 60);
+            five.Size = new Size(75, 75);
             five.TabIndex = 6;
             five.Text = "5";
-            five.UseVisualStyleBackColor = true;
+            five.UseVisualStyleBackColor = false;
             five.Click += button_click;
             // 
             // four
             // 
-            four.FlatAppearance.BorderColor = Color.Yellow;
-            four.FlatAppearance.BorderSize = 10;
+            four.BackColor = Color.OldLace;
+            four.FlatAppearance.BorderColor = Color.LightGray;
+            four.FlatAppearance.BorderSize = 3;
+            four.FlatAppearance.CheckedBackColor = Color.Red;
+            four.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            four.FlatAppearance.MouseOverBackColor = Color.White;
+            four.FlatStyle = FlatStyle.Flat;
             four.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            four.Location = new Point(22, 144);
+            four.Location = new Point(29, 185);
+            four.Margin = new Padding(4);
             four.Name = "four";
-            four.Size = new Size(60, 60);
+            four.Size = new Size(75, 75);
             four.TabIndex = 5;
             four.Text = "4";
-            four.UseVisualStyleBackColor = true;
+            four.UseVisualStyleBackColor = false;
             four.Click += button_click;
             // 
             // minus
             // 
-            minus.FlatAppearance.BorderColor = Color.Yellow;
-            minus.FlatAppearance.BorderSize = 10;
+            minus.BackColor = Color.OldLace;
+            minus.FlatAppearance.BorderColor = Color.LightGray;
+            minus.FlatAppearance.BorderSize = 3;
+            minus.FlatAppearance.CheckedBackColor = Color.Red;
+            minus.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            minus.FlatAppearance.MouseOverBackColor = Color.White;
+            minus.FlatStyle = FlatStyle.Flat;
             minus.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            minus.Location = new Point(220, 210);
+            minus.Location = new Point(281, 268);
+            minus.Margin = new Padding(4);
             minus.Name = "minus";
-            minus.Size = new Size(60, 60);
+            minus.Size = new Size(75, 75);
             minus.TabIndex = 13;
             minus.Text = "-";
-            minus.UseVisualStyleBackColor = true;
+            minus.UseVisualStyleBackColor = false;
             minus.Click += operator_click;
             // 
             // three
             // 
-            three.FlatAppearance.BorderColor = Color.Yellow;
-            three.FlatAppearance.BorderSize = 10;
+            three.BackColor = Color.OldLace;
+            three.FlatAppearance.BorderColor = Color.LightGray;
+            three.FlatAppearance.BorderSize = 3;
+            three.FlatAppearance.CheckedBackColor = Color.Red;
+            three.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            three.FlatAppearance.MouseOverBackColor = Color.White;
+            three.FlatStyle = FlatStyle.Flat;
             three.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            three.Location = new Point(154, 210);
+            three.Location = new Point(197, 268);
+            three.Margin = new Padding(4);
             three.Name = "three";
-            three.Size = new Size(60, 60);
+            three.Size = new Size(75, 75);
             three.TabIndex = 12;
             three.Text = "3";
-            three.UseVisualStyleBackColor = true;
+            three.UseVisualStyleBackColor = false;
             three.Click += button_click;
             // 
             // two
             // 
-            two.FlatAppearance.BorderColor = Color.Yellow;
-            two.FlatAppearance.BorderSize = 10;
+            two.BackColor = Color.OldLace;
+            two.FlatAppearance.BorderColor = Color.LightGray;
+            two.FlatAppearance.BorderSize = 3;
+            two.FlatAppearance.CheckedBackColor = Color.Red;
+            two.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            two.FlatAppearance.MouseOverBackColor = Color.White;
+            two.FlatStyle = FlatStyle.Flat;
             two.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            two.Location = new Point(88, 210);
+            two.Location = new Point(112, 268);
+            two.Margin = new Padding(4);
             two.Name = "two";
-            two.Size = new Size(60, 60);
+            two.Size = new Size(75, 75);
             two.TabIndex = 11;
             two.Text = "2";
-            two.UseVisualStyleBackColor = true;
+            two.UseVisualStyleBackColor = false;
             two.Click += button_click;
             // 
             // one
             // 
-            one.FlatAppearance.BorderColor = Color.Yellow;
-            one.FlatAppearance.BorderSize = 10;
+            one.BackColor = Color.OldLace;
+            one.FlatAppearance.BorderColor = Color.LightGray;
+            one.FlatAppearance.BorderSize = 3;
+            one.FlatAppearance.CheckedBackColor = Color.Red;
+            one.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            one.FlatAppearance.MouseOverBackColor = Color.White;
+            one.FlatStyle = FlatStyle.Flat;
             one.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            one.Location = new Point(22, 210);
+            one.Location = new Point(28, 268);
+            one.Margin = new Padding(4);
             one.Name = "one";
-            one.Size = new Size(60, 60);
+            one.Size = new Size(75, 75);
             one.TabIndex = 10;
             one.Text = "1";
-            one.UseVisualStyleBackColor = true;
+            one.UseVisualStyleBackColor = false;
             one.Click += button_click;
             // 
             // equal
             // 
-            equal.FlatAppearance.BorderColor = Color.Yellow;
-            equal.FlatAppearance.BorderSize = 10;
+            equal.BackColor = Color.FromArgb(78, 176, 155);
+            equal.FlatAppearance.BorderColor = Color.LightGray;
+            equal.FlatAppearance.BorderSize = 3;
+            equal.FlatAppearance.CheckedBackColor = Color.Red;
+            equal.FlatAppearance.MouseDownBackColor = Color.DarkSlateGray;
+            equal.FlatAppearance.MouseOverBackColor = Color.PowderBlue;
+            equal.FlatStyle = FlatStyle.Flat;
             equal.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            equal.Location = new Point(286, 210);
+            equal.Location = new Point(364, 268);
+            equal.Margin = new Padding(4);
             equal.Name = "equal";
-            equal.Size = new Size(60, 126);
+            equal.Size = new Size(75, 158);
             equal.TabIndex = 19;
             equal.Text = "=";
-            equal.UseVisualStyleBackColor = true;
+            equal.UseVisualStyleBackColor = false;
             equal.Click += button_equal;
             // 
             // plus
             // 
-            plus.FlatAppearance.BorderColor = Color.Yellow;
-            plus.FlatAppearance.BorderSize = 10;
+            plus.BackColor = Color.OldLace;
+            plus.FlatAppearance.BorderColor = Color.LightGray;
+            plus.FlatAppearance.BorderSize = 3;
+            plus.FlatAppearance.CheckedBackColor = Color.Red;
+            plus.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            plus.FlatAppearance.MouseOverBackColor = Color.White;
+            plus.FlatStyle = FlatStyle.Flat;
             plus.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            plus.Location = new Point(220, 276);
+            plus.Location = new Point(281, 350);
+            plus.Margin = new Padding(4);
             plus.Name = "plus";
-            plus.Size = new Size(60, 60);
+            plus.Size = new Size(75, 75);
             plus.TabIndex = 18;
             plus.Text = "+";
-            plus.UseVisualStyleBackColor = true;
+            plus.UseVisualStyleBackColor = false;
             plus.Click += operator_click;
             // 
             // dot
             // 
-            dot.FlatAppearance.BorderColor = Color.Yellow;
-            dot.FlatAppearance.BorderSize = 10;
+            dot.BackColor = Color.OldLace;
+            dot.FlatAppearance.BorderColor = Color.LightGray;
+            dot.FlatAppearance.BorderSize = 3;
+            dot.FlatAppearance.CheckedBackColor = Color.Red;
+            dot.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            dot.FlatAppearance.MouseOverBackColor = Color.White;
+            dot.FlatStyle = FlatStyle.Flat;
             dot.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dot.Location = new Point(154, 276);
+            dot.Location = new Point(197, 351);
+            dot.Margin = new Padding(4);
             dot.Name = "dot";
-            dot.Size = new Size(60, 60);
+            dot.Size = new Size(75, 75);
             dot.TabIndex = 17;
             dot.Text = ".";
-            dot.UseVisualStyleBackColor = true;
+            dot.UseVisualStyleBackColor = false;
             dot.Click += button_click;
             // 
             // zero
             // 
-            zero.FlatAppearance.BorderColor = Color.Yellow;
-            zero.FlatAppearance.BorderSize = 10;
+            zero.BackColor = Color.OldLace;
+            zero.FlatAppearance.BorderColor = Color.LightGray;
+            zero.FlatAppearance.BorderSize = 3;
+            zero.FlatAppearance.CheckedBackColor = Color.Red;
+            zero.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            zero.FlatAppearance.MouseOverBackColor = Color.White;
+            zero.FlatStyle = FlatStyle.Flat;
             zero.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            zero.Location = new Point(22, 276);
+            zero.Location = new Point(29, 350);
+            zero.Margin = new Padding(4);
             zero.Name = "zero";
-            zero.Size = new Size(126, 60);
+            zero.Size = new Size(158, 75);
             zero.TabIndex = 15;
             zero.Text = "0";
-            zero.UseVisualStyleBackColor = true;
+            zero.UseVisualStyleBackColor = false;
             zero.Click += button_click;
             // 
             // resultText
             // 
+            resultText.BackColor = Color.FloralWhite;
             resultText.Font = new Font("Segoe UI", 17F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            resultText.Location = new Point(22, 29);
+            resultText.Location = new Point(29, 36);
+            resultText.Margin = new Padding(4);
             resultText.Multiline = true;
             resultText.Name = "resultText";
-            resultText.Size = new Size(323, 44);
+            resultText.Size = new Size(410, 54);
             resultText.TabIndex = 20;
             resultText.Text = "0";
             resultText.TextAlign = HorizontalAlignment.Right;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 192, 192);
-            ClientSize = new Size(372, 346);
+            BackColor = Color.White;
+            BackgroundImage = Properties.Resources.kt4;
+            ClientSize = new Size(465, 448);
             Controls.Add(resultText);
             Controls.Add(equal);
             Controls.Add(plus);
@@ -320,10 +431,14 @@
             Controls.Add(nine);
             Controls.Add(eight);
             Controls.Add(seven);
+            Cursor = Cursors.Hand;
+            DoubleBuffered = true;
             ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Calculator";
             ResumeLayout(false);
             PerformLayout();
         }

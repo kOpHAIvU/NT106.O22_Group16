@@ -117,4 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="meo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\meo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FBC193" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FBC193.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="F28076" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\F28076.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jkj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jkj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FAE0C7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FAE0C7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4EB09B" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4EB09B.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hellokitty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hellokitty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FFB6AF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FFB6AF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kt1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kt3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kt3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\meo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kt2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kt2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kt4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kt4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
