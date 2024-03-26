@@ -50,7 +50,7 @@ namespace Server
 
         void Connect()
         {
-            if (check_ip_port(inputIP.Text,inputPort.Text))
+            if (check_ip_port(inputIP.Text, inputPort.Text))
             {
                 clientList = new List<Socket>();
                 IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
@@ -71,7 +71,8 @@ namespace Server
                             receive.IsBackground = true;
                             receive.Start(client);
                         }
-                    } catch
+                    }
+                    catch
                     {
                         IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
                         server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
@@ -92,7 +93,7 @@ namespace Server
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            foreach (Socket item in clientList) 
+            foreach (Socket item in clientList)
             {
                 Send(item);
             }
@@ -115,13 +116,14 @@ namespace Server
                 {
                     byte[] data = new byte[1024 * 5000];
                     client.Receive(data);
+                    string receivedMessage = (string)Deserialize(data);
+                    string displayedMessage = receivedMessage;
+                    Message_Add(displayedMessage);
 
-                    Message_Add((string)Deserialize(data));
-                    
                     foreach (Socket item in clientList)
                     {
                         if (item != null && item != client)
-                            item.Send(Serialize((string)Deserialize(data)));
+                            item.Send(Serialize(displayedMessage));
                     }
                 }
             }
@@ -130,12 +132,20 @@ namespace Server
                 clientList.Remove(client);
                 client.Close();
             }
-            
+
         }
 
         void Message_Add(string message)
         {
-            messageLv.Items.Add(new ListViewItem() { Text = message });
+         
+            if (messageLv.InvokeRequired)
+            {
+                messageLv.Invoke(new Action<string>(Message_Add), new object[] { message });
+            }
+            else
+            {
+                messageLv.Items.Add(new ListViewItem() { Text = DateTime.Now.ToString() + "-" + message });
+            }
         }
 
         byte[] Serialize(object send)

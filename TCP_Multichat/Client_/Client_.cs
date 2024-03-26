@@ -46,6 +46,7 @@ namespace Client_
             }
             return true;
         }
+
         void Connect()
         {
             if (check_ip_port(inputIP.Text, inputPort.Text))
@@ -80,13 +81,15 @@ namespace Client_
         private void sendBtn_Click(object sender, EventArgs e)
         {
             Send();
-            Message_Add(guestName.Text + ": " + txtMessage.Text);
         }
 
         void Send()
         {
             if (txtMessage.Text != "")
+            {
                 client.Send(Serialize(guestName.Text + ": " + txtMessage.Text));
+                Message_Add(guestName.Text + ": " + txtMessage.Text);
+            }
         }
 
         void Receive()
@@ -97,8 +100,9 @@ namespace Client_
                 {
                     byte[] data = new byte[1024 * 5000];
                     client.Receive(data);
-
-                    Message_Add((string)Deserialize(data));
+                    string receivedMessage = (string)Deserialize(data);
+                    string displayedMessage = receivedMessage;
+                    Message_Add(displayedMessage);
                 }
             }
             catch
@@ -109,8 +113,14 @@ namespace Client_
 
         void Message_Add(string message)
         {
-            messageLv.Items.Add(new ListViewItem() { Text = message });
-            txtMessage.Clear();
+            if (messageLv.InvokeRequired)
+            {
+                messageLv.Invoke(new Action<string>(Message_Add), new object[] { message });
+            }
+            else
+            {
+                messageLv.Items.Add(new ListViewItem() { Text = DateTime.Now.ToString() + " - " + message });
+            }
         }
 
         byte[] Serialize(object send)
