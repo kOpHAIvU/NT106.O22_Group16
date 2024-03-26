@@ -119,8 +119,9 @@ namespace Client_
             }
             else
             {
-                messageLv.Items.Add(new ListViewItem() { Text = DateTime.Now.ToString() + " - " + message });
+                messageLv.Items.Add(new ListViewItem() { Text = DateTime.Now.ToString("HH:mm:ss") + " -  " + message });
             }
+            txtMessage.Clear();
         }
 
         byte[] Serialize(object send)
