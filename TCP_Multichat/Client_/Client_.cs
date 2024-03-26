@@ -52,14 +52,11 @@ namespace Client_
             {
                 try
                 {
-                
-                        IPAddress serverIp = IPAddress.Parse(inputIP.Text);
-                        int serverPort = int.Parse(inputPort.Text);
-                        IP = new IPEndPoint(serverIp, serverPort);
-                        client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-                        client.Connect(IP);
-
-                
+                    IPAddress serverIp = IPAddress.Parse(inputIP.Text);
+                    int serverPort = int.Parse(inputPort.Text);
+                    IP = new IPEndPoint(serverIp, serverPort);
+                    client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                    client.Connect(IP);
                 }
                 catch (Exception ex)
                 {
@@ -69,11 +66,10 @@ namespace Client_
                 Thread listen = new Thread(Receive);
                 listen.IsBackground = true;
                 listen.Start();
+                MessageBox.Show("Đã kết nối với Server", "Thông báo", MessageBoxButtons.OK);
             }
             else
-                {
-                    MessageBox.Show("Vui lòng nhập lại IP hoặc port");
-                }
+                MessageBox.Show("Vui lòng nhập lại IP hoặc port", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         void Disconnect()

@@ -79,11 +79,10 @@ namespace Server
                 });
                 listen.IsBackground = true;
                 listen.Start();
+                MessageBox.Show("Server đã mở kết nối", "Thông báo", MessageBoxButtons.OK);
             }
             else
-            {
-                MessageBox.Show("Vui lòng nhập lại IP và port");
-            }
+                MessageBox.Show("Vui lòng nhập lại IP hoặc port", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         void Disconnect()
