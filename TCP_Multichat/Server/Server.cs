@@ -12,23 +12,37 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Server
 {
     public partial class Server : Form
     {
         IPEndPoint IP;
-        Socket server;
+        Socket server = null;
         List<Socket> clientList;
 
         public Server()
         {
             InitializeComponent();
-
+            server = new Socket(SocketType.Stream, ProtocolType.Tcp);
             CheckForIllegalCrossThreadCalls = false;
-            Connect();
         }
 
+        bool check_ip_port(string a, string b)
+        {
+            string pattern_ID = @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+            if (!Regex.IsMatch(a, pattern_ID))
+            {
+                return false;
+            }
+            string pattern_port = @"^(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]?\d{1,4})$";
+            if (!Regex.IsMatch(b, pattern_port))
+            {
+                return false;
+            }
+            return true;
+        }
         private void Server_FormClosed(object sender, FormClosedEventArgs e)
         {
             server.Close();
@@ -36,33 +50,40 @@ namespace Server
 
         void Connect()
         {
-            clientList = new List<Socket>();
-            IP = new IPEndPoint(IPAddress.Any, 1111);
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            if (check_ip_port(inputIP.Text,inputPort.Text))
+            {
+                clientList = new List<Socket>();
+                IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
+                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
 
-            server.Bind(IP);
+                server.Bind(IP);
 
-            Thread listen = new Thread(() => {
-                try
-                {
-                    while (true)
+                Thread listen = new Thread(() => {
+                    try
                     {
-                        server.Listen(100);
-                        Socket client = server.Accept();
-                        clientList.Add(client);
+                        while (true)
+                        {
+                            server.Listen(100);
+                            Socket client = server.Accept();
+                            clientList.Add(client);
 
-                        Thread receive = new Thread(Receive);
-                        receive.IsBackground = true;
-                        receive.Start(client);
+                            Thread receive = new Thread(Receive);
+                            receive.IsBackground = true;
+                            receive.Start(client);
+                        }
+                    } catch
+                    {
+                        IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
+                        server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                     }
-                } catch
-                {
-                    IP = new IPEndPoint(IPAddress.Any, 1111);
-                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-                }
-            });
-            listen.IsBackground = true ;
-            listen.Start();
+                });
+                listen.IsBackground = true;
+                listen.Start();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập lại IP và port");
+            }
         }
 
         void Disconnect()
@@ -134,6 +155,11 @@ namespace Server
             BinaryFormatter formatter = new BinaryFormatter();
 
             return formatter.Deserialize(stream);
+        }
+
+        private void listen_Click(object sender, EventArgs e)
+        {
+            Connect();
         }
     }
 }

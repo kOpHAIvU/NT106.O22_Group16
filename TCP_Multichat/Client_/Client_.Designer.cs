@@ -33,9 +33,9 @@
             this.messageLv = new System.Windows.Forms.ListView();
             this.guestName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.inputIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.inputPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -90,15 +90,15 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Username";
             // 
-            // textBox1
+            // inputIP
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(114, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 31);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "127.0.0.1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.inputIP.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputIP.Location = new System.Drawing.Point(114, 75);
+            this.inputIP.Name = "inputIP";
+            this.inputIP.Size = new System.Drawing.Size(190, 31);
+            this.inputIP.TabIndex = 11;
+            this.inputIP.Text = "127.0.0.1";
+            this.inputIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -110,15 +110,15 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "IP";
             // 
-            // textBox2
+            // inputPort
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(114, 133);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 31);
-            this.textBox2.TabIndex = 13;
-            this.textBox2.Text = "1111";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.inputPort.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputPort.Location = new System.Drawing.Point(114, 133);
+            this.inputPort.Name = "inputPort";
+            this.inputPort.Size = new System.Drawing.Size(190, 31);
+            this.inputPort.TabIndex = 13;
+            this.inputPort.Text = "1111";
+            this.inputPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -139,6 +139,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Client_
             // 
@@ -146,9 +147,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 402);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.inputPort);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.inputIP);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.sendBtn);
             this.Controls.Add(this.txtMessage);
@@ -170,9 +171,9 @@
         private System.Windows.Forms.ListView messageLv;
         private System.Windows.Forms.TextBox guestName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox inputIP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox inputPort;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
     }

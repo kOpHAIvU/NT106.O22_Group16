@@ -12,18 +12,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Client_
 {
     public partial class Client_ : Form
     {
         IPEndPoint IP;
-        Socket client;
+        Socket client = null;
         public Client_()
         {
             InitializeComponent();
+            client = new Socket(SocketType.Stream, ProtocolType.Tcp);
             CheckForIllegalCrossThreadCalls = false;
-            Connect();
         }
 
         private void Client_FormClosed(object sender, FormClosedEventArgs e)
@@ -31,23 +32,48 @@ namespace Client_
             client.Close();
         }
 
+        bool check_ip_port(string a, string b)
+        {
+            string pattern_ID = @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+            if (!Regex.IsMatch(a, pattern_ID))
+            {
+                return false;
+            }
+            string pattern_port = @"^(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]?\d{1,4})$";
+            if (!Regex.IsMatch(b, pattern_port))
+            {
+                return false;
+            }
+            return true;
+        }
         void Connect()
         {
-            IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 1111);
-            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-            try
+            if (check_ip_port(inputIP.Text, inputPort.Text))
             {
-                client.Connect(IP);
-            }
-            catch
-            {
-                MessageBox.Show("Không thể kết nối với Server!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                try
+                {
+                
+                        IPAddress serverIp = IPAddress.Parse(inputIP.Text);
+                        int serverPort = int.Parse(inputPort.Text);
+                        IP = new IPEndPoint(serverIp, serverPort);
+                        client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                        client.Connect(IP);
 
-            Thread listen = new Thread(Receive);
-            listen.IsBackground = true;
-            listen.Start();
+                
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                Thread listen = new Thread(Receive);
+                listen.IsBackground = true;
+                listen.Start();
+            }
+            else
+                {
+                    MessageBox.Show("Vui lòng nhập lại IP hoặc port");
+                }
         }
 
         void Disconnect()
@@ -107,6 +133,11 @@ namespace Client_
             BinaryFormatter formatter = new BinaryFormatter();
 
             return formatter.Deserialize(stream);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Connect();
         }
     }
 }
