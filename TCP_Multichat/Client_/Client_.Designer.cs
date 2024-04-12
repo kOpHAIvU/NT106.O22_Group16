@@ -35,7 +35,7 @@
             this.guestName = new System.Windows.Forms.TextBox();
             this.inputIP = new System.Windows.Forms.TextBox();
             this.inputPort = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.connectBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sendBtn
@@ -118,21 +118,21 @@
             this.inputPort.Text = "1111";
             this.inputPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // button1
+            // connectBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(108, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 37);
-            this.button1.TabIndex = 14;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.connectBtn.BackColor = System.Drawing.Color.Transparent;
+            this.connectBtn.FlatAppearance.BorderSize = 0;
+            this.connectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.connectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.connectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectBtn.ForeColor = System.Drawing.Color.White;
+            this.connectBtn.Location = new System.Drawing.Point(108, 263);
+            this.connectBtn.Name = "connectBtn";
+            this.connectBtn.Size = new System.Drawing.Size(150, 37);
+            this.connectBtn.TabIndex = 14;
+            this.connectBtn.UseVisualStyleBackColor = false;
+            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
             // 
             // Client_
             // 
@@ -141,7 +141,7 @@
             this.BackgroundImage = global::Client_.Properties.Resources.USER;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(722, 403);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.inputPort);
             this.Controls.Add(this.inputIP);
             this.Controls.Add(this.sendBtn);
@@ -167,7 +167,7 @@
         private System.Windows.Forms.TextBox guestName;
         private System.Windows.Forms.TextBox inputIP;
         private System.Windows.Forms.TextBox inputPort;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button connectBtn;
     }
 }
 

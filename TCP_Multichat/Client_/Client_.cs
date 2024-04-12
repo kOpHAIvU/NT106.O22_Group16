@@ -8,28 +8,30 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net.Security;
 
 namespace Client_
 {
     public partial class Client_ : Form
     {
         IPEndPoint IP;
-        Socket client = null;
+        SslStream clientStream = null;
         public Client_()
         {
             InitializeComponent();
-            client = new Socket(SocketType.Stream, ProtocolType.Tcp);
             CheckForIllegalCrossThreadCalls = false;
         }
 
         private void Client_FormClosed(object sender, FormClosedEventArgs e)
         {
-            client.Close();
+            Disconnect();
         }
 
         bool check_ip_port(string a, string b)
@@ -56,8 +58,14 @@ namespace Client_
                     IPAddress serverIp = IPAddress.Parse(inputIP.Text);
                     int serverPort = int.Parse(inputPort.Text);
                     IP = new IPEndPoint(serverIp, serverPort);
-                    client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-                    client.Connect(IP);
+
+                    TcpClient tcpClient = new TcpClient(IP.Address.ToString(), IP.Port);
+                    clientStream = new SslStream(tcpClient.GetStream(), false, ValidateCert);
+
+                    Thread listen1 = new Thread(Receive);
+                    listen1.IsBackground = true;
+                    listen1.Start();
+                    MessageBox.Show("Đã kết nối với Server (SSL)", "Thông báo", MessageBoxButtons.OK);
                 }
                 catch (Exception ex)
                 {
@@ -73,9 +81,22 @@ namespace Client_
                 MessageBox.Show("Vui lòng nhập lại IP hoặc port", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private bool ValidateCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Thay đổi đoạn code này để phù hợp với yêu cầu bảo mật của bạn
+            // Ví dụ: kiểm tra tên chung (CN) trong chứng chỉ
+            if (certificate.Subject.Contains("CN=server_certificate_name"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         void Disconnect()
         {
-            client.Close();
+            if (clientStream != null)
+                clientStream.Close();
         }
 
         private void sendBtn_Click(object sender, EventArgs e)
@@ -85,9 +106,10 @@ namespace Client_
 
         void Send()
         {
-            if (txtMessage.Text != "")
+            if (clientStream != null && txtMessage.Text != "")
             {
-                client.Send(Serialize(guestName.Text + ": " + txtMessage.Text));
+                byte[] data = Serialize(guestName.Text + ": " + txtMessage.Text);
+                clientStream.Write(data, 0, data.Length);
                 Message_Add(guestName.Text + ": " + txtMessage.Text);
             }
         }
@@ -96,13 +118,17 @@ namespace Client_
         {
             try
             {
-                while (true)
+                while (clientStream != null && clientStream.CanRead)
                 {
                     byte[] data = new byte[1024 * 5000];
-                    client.Receive(data);
-                    string receivedMessage = (string)Deserialize(data);
-                    string displayedMessage = receivedMessage;
-                    Message_Add(displayedMessage);
+                    int bytesRead = clientStream.Read(data, 0, data.Length);
+
+                    if (bytesRead == 0)
+                    {
+                        break; // Client disconnected
+                    }
+
+                    Message_Add(Deserialize(data.Take(bytesRead).ToArray()).ToString());
                 }
             }
             catch
@@ -142,7 +168,7 @@ namespace Client_
             return formatter.Deserialize(stream);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void connectBtn_Click(object sender, EventArgs e)
         {
             Connect();
         }

@@ -7,25 +7,27 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Net;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net.Security;
 
 namespace Server
 {
     public partial class Server : Form
     {
         IPEndPoint IP;
-        Socket server = null;
-        List<Socket> clientList;
+        X509Certificate2 certificate;
+        List<SslStream> clientList;
 
         public Server()
         {
             InitializeComponent();
-            server = new Socket(SocketType.Stream, ProtocolType.Tcp);
             CheckForIllegalCrossThreadCalls = false;
         }
 
@@ -33,54 +35,57 @@ namespace Server
         {
             string pattern_ID = @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
             if (!Regex.IsMatch(a, pattern_ID))
-            {
                 return false;
-            }
             string pattern_port = @"^(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]?\d{1,4})$";
             if (!Regex.IsMatch(b, pattern_port))
-            {
                 return false;
-            }
             return true;
         }
         private void Server_FormClosed(object sender, FormClosedEventArgs e)
         {
-            server.Close();
+            foreach (SslStream client in clientList)
+                client.Close();
+            certificate?.Dispose();
         }
 
         void Connect()
         {
             if (check_ip_port(inputIP.Text, inputPort.Text))
             {
-                clientList = new List<Socket>();
+                clientList = new List<SslStream>();
                 IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
-                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-                server.Bind(IP);
+                certificate = X509Certificate.CreateFromCertFile("");
 
                 Thread listen = new Thread(() => {
                     try
                     {
+                        TcpListener listener = new TcpListener(IP);
+                        listener.Start();
                         while (true)
                         {
-                            server.Listen(100);
-                            Socket client = server.Accept();
-                            clientList.Add(client);
+                            Socket clientSocket = listener.AcceptSocket();
+                            SslStream clientStream = new SslStream(
+                                new NetworkStream(clientSocket),
+                                false,
+                                (sender, certificate, chain, errors) => true // Hàm callback (tùy chọn) để xác thực chứng chỉ server 
+                            );
+
+                            clientStream.AuthenticateAsServer(certificate, clientCertificateRequired: false, checkCertificateRevocation: true);
+                            clientList.Add(clientStream);
 
                             Thread receive = new Thread(Receive);
                             receive.IsBackground = true;
-                            receive.Start(client);
+                            receive.Start(clientStream);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
-                        server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 });
                 listen.IsBackground = true;
                 listen.Start();
-                MessageBox.Show("Server đã mở kết nối", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Server đã mở kết nối SSL", "Thông báo", MessageBoxButtons.OK);
             }
             else
                 MessageBox.Show("Vui lòng nhập lại IP hoặc port", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -88,42 +93,56 @@ namespace Server
 
         void Disconnect()
         {
-            server.Close();
+            foreach (SslStream client in clientList)
+            {
+                client.Close();
+            }
         }
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            foreach (Socket item in clientList)
+            foreach (SslStream client in clientList)
             {
-                Send(item);
+                Send(client);
             }
             Message_Add(serverName.Text + ": " + txtMessage.Text);
             txtMessage.Clear();
         }
 
-        void Send(Socket client)
+        void Send(SslStream client)
         {
             if (client != null && txtMessage.Text != "")
-                client.Send(Serialize(serverName.Text + ": " + txtMessage.Text));
+            {
+                byte[] data = Serialize(serverName.Text + ": " + txtMessage.Text);
+                client.Write(data, 0, data.Length);
+            }
         }
 
         void Receive(Object obj)
         {
-            Socket client = obj as Socket;
+            SslStream client = obj as SslStream;
             try
             {
                 while (true)
                 {
                     byte[] data = new byte[1024 * 5000];
-                    client.Receive(data);
-                    string receivedMessage = (string)Deserialize(data);
-                    string displayedMessage = receivedMessage;
+                    int bytesRead = client.Read(data, 0, data.Length);
+
+                    if (bytesRead == 0)
+                    {
+                        break; // Client disconnected
+                    }
+
+                    string displayedMessage = (string)Deserialize(data.Take(bytesRead).ToArray());
                     Message_Add(displayedMessage);
 
-                    foreach (Socket item in clientList)
+                    foreach (SslStream item in clientList)
                     {
                         if (item != null && item != client)
-                            item.Send(Serialize(displayedMessage));
+                        {
+                            data = Serialize(displayedMessage);
+                            item.Write(data, 0, data.Length);
+                        }
                     }
                 }
             }
@@ -139,13 +158,9 @@ namespace Server
         {
          
             if (messageLv.InvokeRequired)
-            {
                 messageLv.Invoke(new Action<string>(Message_Add), new object[] { message });
-            }
             else
-            {
                 messageLv.Items.Add(new ListViewItem() { Text = DateTime.Now.ToString("HH:mm:ss") + " -  " + message });
-            }
         }
 
         byte[] Serialize(object send)
