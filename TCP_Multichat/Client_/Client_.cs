@@ -61,6 +61,7 @@ namespace Client_
 
                     TcpClient tcpClient = new TcpClient(IP.Address.ToString(), IP.Port);
                     clientStream = new SslStream(tcpClient.GetStream(), false, ValidateCert);
+                    clientStream.AuthenticateAsClient("clientName");
 
                     Thread listen1 = new Thread(Receive);
                     listen1.IsBackground = true;
@@ -83,14 +84,9 @@ namespace Client_
 
         private bool ValidateCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
-            // Thay đổi đoạn code này để phù hợp với yêu cầu bảo mật của bạn
-            // Ví dụ: kiểm tra tên chung (CN) trong chứng chỉ
-            if (certificate.Subject.Contains("CN=server_certificate_name"))
-            {
-                return true;
-            }
-
-            return false;
+            /*if (certificate.Subject.Contains("CN=server_certificate_name"))
+                return true;*/
+            return true;
         }
 
         void Disconnect()

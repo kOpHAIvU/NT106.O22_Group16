@@ -31,7 +31,24 @@ namespace Server
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        bool check_ip_port(string a, string b)
+        private static X509Certificate getServerCert()
+        {
+            X509Store allCert = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            allCert.Open(OpenFlags.ReadOnly);
+
+            X509Certificate2 certFounded = null;
+            foreach (X509Certificate2 currentCert in allCert.Certificates)
+            {
+                if (currentCert.IssuerName.Name != null && currentCert.IssuerName.Name.Equals("CN=server_certificate_name")) 
+                {
+                    certFounded = currentCert;
+                    break;
+                }
+            }
+            return certFounded;
+        }
+
+        bool Check_IP_Port(string a, string b)
         {
             string pattern_ID = @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
             if (!Regex.IsMatch(a, pattern_ID))
@@ -50,12 +67,11 @@ namespace Server
 
         void Connect()
         {
-            if (check_ip_port(inputIP.Text, inputPort.Text))
+            if (Check_IP_Port(inputIP.Text, inputPort.Text))
             {
                 clientList = new List<SslStream>();
                 IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
-                certificate = X509Certificate.CreateFromCertFile("");
-
+                certificate = new X509Certificate2("server.pfx", "password");
                 Thread listen = new Thread(() => {
                     try
                     {
@@ -70,7 +86,7 @@ namespace Server
                                 (sender, certificate, chain, errors) => true // Hàm callback (tùy chọn) để xác thực chứng chỉ server 
                             );
 
-                            clientStream.AuthenticateAsServer(certificate, clientCertificateRequired: false, checkCertificateRevocation: true);
+                            clientStream.AuthenticateAsServer(certificate, false, SslProtocols.Tls12, false);
                             clientList.Add(clientStream);
 
                             Thread receive = new Thread(Receive);
