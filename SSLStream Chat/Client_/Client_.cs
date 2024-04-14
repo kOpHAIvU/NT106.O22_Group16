@@ -59,9 +59,16 @@ namespace Client_
                     int serverPort = int.Parse(inputPort.Text);
                     IP = new IPEndPoint(serverIp, serverPort);
 
+                    // Load server certificate from PFX file (replace with your path)
+                    X509Certificate2 certificate = new X509Certificate2("server.pfx", "29032004");
+                    var clientCertificateCollection = new
+                    X509CertificateCollection(new X509Certificate[]
+                        { certificate });
+
+                    // Create secure connection (SSL Stream)
                     TcpClient tcpClient = new TcpClient(IP.Address.ToString(), IP.Port);
                     clientStream = new SslStream(tcpClient.GetStream(), false, ValidateCert);
-                    clientStream.AuthenticateAsClient("clientName");
+                    clientStream.AuthenticateAsClient("clientName", clientCertificateCollection, SslProtocols.Tls12, false); // Use TLS 1.2 for security
 
                     Thread listen1 = new Thread(Receive);
                     listen1.IsBackground = true;
@@ -84,9 +91,7 @@ namespace Client_
 
         private bool ValidateCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
-            /*if (certificate.Subject.Contains("CN=server_certificate_name"))
-                return true;*/
-            return true;
+            return sslPolicyErrors == SslPolicyErrors.None;
         }
 
         void Disconnect()

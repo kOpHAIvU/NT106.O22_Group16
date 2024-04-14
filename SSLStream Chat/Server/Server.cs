@@ -39,7 +39,7 @@ namespace Server
             X509Certificate2 certFounded = null;
             foreach (X509Certificate2 currentCert in allCert.Certificates)
             {
-                if (currentCert.IssuerName.Name != null && currentCert.IssuerName.Name.Equals("CN=server_certificate_name")) 
+                if (currentCert.IssuerName.Name != null && currentCert.IssuerName.Name.Equals("CN=your_server_domain_name")) 
                 {
                     certFounded = currentCert;
                     break;
@@ -71,7 +71,7 @@ namespace Server
             {
                 clientList = new List<SslStream>();
                 IP = new IPEndPoint(IPAddress.Parse(inputIP.Text), int.Parse(inputPort.Text));
-                certificate = new X509Certificate2("server.pfx", "password");
+                certificate = new X509Certificate2("server.pfx", "29032004");
                 Thread listen = new Thread(() => {
                     try
                     {
